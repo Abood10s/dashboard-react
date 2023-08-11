@@ -35,6 +35,7 @@ const UploadForm = () => {
           handleBlur={formik.handleBlur}
           value={formik.values.name}
           error={formik.touched.name && formik.errors.name}
+          placeholder="Enter product name"
         />
         <div className="form-group">
           <label htmlFor="category">Product Category:</label>
@@ -76,18 +77,26 @@ const UploadForm = () => {
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
                 justifyContent: "space-between",
+                gap: "1rem",
+                alignItems: "center",
                 margin: "0.5rem auto",
               }}
             >
               <img
                 src={URL.createObjectURL(formik.values.productImage)}
                 alt="product"
+                className="fade-in product-image"
               />
               <small style={{ fontWeight: "bold", marginLeft: "1rem" }}>
                 file size: {formatFileSize(formik.values.productImage.size)}
               </small>
+              <button
+                onClick={() => (formik.values.productImage = undefined)}
+                className="delete-image"
+              >
+                Delete
+              </button>
             </div>
           )}
           {formik.touched.productImage && formik.errors.productImage ? (
@@ -95,28 +104,31 @@ const UploadForm = () => {
           ) : null}
         </div>
         <FormField
-          label="Product Price:"
+          label="Product Price"
           id="price"
           handleChange={formik.handleChange}
           handleBlur={formik.handleBlur}
           value={formik.values.price}
           error={formik.touched.price && formik.errors.price}
+          placeholder="Enter product price"
         />
         <FormField
-          label="Product Rating:"
+          label="Product Rating"
           id="rating"
           handleChange={formik.handleChange}
           handleBlur={formik.handleBlur}
           value={formik.values.rating}
           error={formik.touched.rating && formik.errors.rating}
+          placeholder="insert rating"
         />
         <FormField
-          label="Product Description:"
+          label="Product Description"
           id="description"
           handleChange={formik.handleChange}
           handleBlur={formik.handleBlur}
           value={formik.values.description}
           error={formik.touched.description && formik.errors.description}
+          placeholder="What's your thoughts about the product"
         />
         <button type="submit" className="submit-button">
           Submit

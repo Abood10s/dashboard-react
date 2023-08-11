@@ -1,6 +1,10 @@
 .upload-form {
-    max-width: 400px;
-    margin: 0 auto;
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 500px;
+    border: 2px solid #007bff59;
+    border-radius: 7px;
+    margin: 1rem 1.5rem;
 }
 
 .form-group {
@@ -16,7 +20,7 @@
 .input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #007bff59;
     border-radius: 4px;
     outline: none;
     transition: all ease 0.1s;
@@ -30,10 +34,25 @@
     animation: InvalidInput 0.3s ease-in-out 3;
 }
 
+.product-image {
+    display: block;
+    object-fit: cover;
+    max-height: 90px;
+}
+
 .error {
     color: red;
     font-size: 14px;
     margin-top: 5px;
+}
+
+.delete-image {
+    background-color: red;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
 }
 
 .submit-button {

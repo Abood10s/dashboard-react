@@ -1,6 +1,14 @@
 import React from "react";
 
-const FormField = ({ label, id, handleChange, handleBlur, value, error }) => {
+const FormField = ({
+  label,
+  id,
+  handleChange,
+  handleBlur,
+  value,
+  error,
+  placeholder,
+}) => {
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}:</label>
@@ -11,6 +19,7 @@ const FormField = ({ label, id, handleChange, handleBlur, value, error }) => {
         onChange={handleChange}
         onBlur={handleBlur}
         value={value}
+        placeholder={placeholder}
       />
       {error && <div style={{ color: "red" }}>{error}</div>}
     </div>

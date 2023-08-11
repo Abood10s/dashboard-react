@@ -9,17 +9,19 @@ const Product = ({ data }) => {
   }
   return (
     <div className="product-container">
-      <h1 className="product-name">product name: {name}</h1>
+      <h1 className="product-name">{name}</h1>
       <img
         src={URL.createObjectURL(productImage)}
         alt={name}
         className="product-image"
       />
-      <h1>product price: {price}</h1>
-
-      <h3>Product rating: {stars}</h3>
-      <h1>product category: {category}</h1>
-      <h1>product description: {description}</h1>
+      <h2 className="product-price">${price}</h2>
+      <div className="product-rating">
+        <span>Rating:</span>
+        {stars}
+      </div>
+      <p className="product-category">{category}</p>
+      <p className="product-description">{description}</p>
     </div>
   );
 };
