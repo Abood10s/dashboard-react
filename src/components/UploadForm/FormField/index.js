@@ -21,7 +21,9 @@ const FormField = ({
         value={value}
         placeholder={placeholder}
       />
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      {error && (
+        <small style={{ color: "red", fontWeight: "bold" }}>{error}</small>
+      )}
     </div>
   );
 };

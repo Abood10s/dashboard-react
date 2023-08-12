@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import { useFormik } from "formik";
 import Product from "../Product";
-import { formatFileSize, schema } from "../../utils";
+import { formatFileSize, schema, toBase64 } from "../../utils";
 import FormField from "./FormField";
+import { useContext } from "react";
+import { ProductsContext } from "../../Context";
 
 const UploadForm = () => {
-  const [products, setProducts] = useState([]);
+  const date = new Date();
+  const { products, addProduct, deleteAllProducts } =
+    useContext(ProductsContext);
 
   const formik = useFormik({
     initialValues: {
@@ -18,13 +22,25 @@ const UploadForm = () => {
       price: undefined,
     },
     validationSchema: schema,
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
-      setProducts([...products, values]);
-      resetForm();
+    onSubmit: async (values, { resetForm }) => {
+      const imageBase64 = await toBase64(values.productImage);
+      addProduct({
+        ...values,
+        time: date.toLocaleTimeString(),
+        productDate: date.toLocaleDateString("en-gb"),
+        id: Math.floor(Math.random() * 1000),
+        productImage: imageBase64,
+      });
+      resetForm({
+        name: "",
+        category: "",
+        description: "",
+        productImage: undefined,
+        rating: undefined,
+        price: undefined,
+      });
     },
   });
-
   return (
     <>
       <form onSubmit={formik.handleSubmit} className="upload-form">
@@ -56,7 +72,9 @@ const UploadForm = () => {
             <option value="Plants">Plants</option>
           </select>
           {formik.touched.category && formik.errors.category ? (
-            <div style={{ color: "red" }}>{formik.errors.category}</div>
+            <small style={{ color: "red", fontWeight: "bold" }}>
+              {formik.errors.category}
+            </small>
           ) : null}
         </div>
         <div className="form-group">
@@ -100,7 +118,9 @@ const UploadForm = () => {
             </div>
           )}
           {formik.touched.productImage && formik.errors.productImage ? (
-            <div style={{ color: "red" }}>{formik.errors.productImage}</div>
+            <small style={{ color: "red", fontWeight: "bold" }}>
+              {formik.errors.productImage}
+            </small>
           ) : null}
         </div>
         <FormField
@@ -135,8 +155,17 @@ const UploadForm = () => {
         </button>
       </form>
       {products?.map((product) => {
-        return <Product data={product} key={product.name} />;
+        return <Product data={product} key={product.id} />;
       })}
+      {products.length !== 0 && (
+        <button
+          onClick={() => deleteAllProducts()}
+          className="delete-image"
+          style={{ margin: "1.5rem " }}
+        >
+          Delete All products
+        </button>
+      )}
     </>
   );
 };
