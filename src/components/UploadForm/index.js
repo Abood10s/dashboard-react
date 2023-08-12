@@ -157,7 +157,7 @@ const UploadForm = () => {
       {products?.map((product) => {
         return <Product data={product} key={product.id} />;
       })}
-      {products.length !== 0 && (
+      {products.length > 1 && (
         <button
           onClick={() => deleteAllProducts()}
           className="delete-image"

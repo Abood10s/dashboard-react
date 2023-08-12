@@ -11,6 +11,18 @@ const ProductsProvider = ({ children }) => {
 
     localStorage.setItem("products", JSON.stringify(updatedProducts));
   };
+  const addComment = (data) => {
+    const { id, comment, commentTime } = data;
+    const updatedProducts = products.map((product) => {
+      if (product.id === id) {
+        return { ...product, theComment: comment, commentTime: commentTime };
+      }
+      return product;
+    });
+
+    setProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+  };
   const deleteProduct = (id) => {
     setProducts(products.filter((item) => item.id !== id));
   };
@@ -33,6 +45,7 @@ const ProductsProvider = ({ children }) => {
         deleteProduct,
         setProducts,
         deleteAllProducts,
+        addComment,
       }}
     >
       {children}

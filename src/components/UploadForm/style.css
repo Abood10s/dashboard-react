@@ -55,6 +55,23 @@
     border: none;
 }
 
+.comment-btn {
+    background-color: yellowgreen;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    margin: 0.5rem 0;
+}
+
+.comment {
+    margin: 0.5rem 0;
+    padding: 5px 15px;
+    border: 1px solid #18b300;
+    border-radius: 4px;
+}
+
 .submit-button {
     background-color: #007bff;
     color: white;
