@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 19%;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.navbar .icon {
+    font-size: 24px;
+    color: #6C737F;
+}
+
+.menu {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .right-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .menu {
+        display: block;
+    }
+    .navbar {
+        left: 0;
+    }
+}

@@ -9,10 +9,20 @@
     color: #fff;
     z-index: 99999;
     transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.2rem;
+}
+
+.sidebar .icon {
+    font-size: 17px;
+    color: #6C737F;
 }
 
 .sidebar.slide-right {
-    width: 55%;
+    width: 30%;
     left: 0;
 }
 
@@ -37,21 +47,15 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .sidebar {
-        width: 19%;
         left: -101%;
     }
 }
 
-@media screen and (min-width: 768px) {
-    .sidebar {
-        width: 30%;
-    }
-}
-
-@media screen and (min-width: 1100px) {
-    .sidebar {
-        width: 20%;
+@media screen and (max-width: 768px) {
+    .sidebar.slide-right {
+        width: 75%;
+        left: 0;
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../Sidebar";
-import Navbar from "../../Navbar";
+import Navbar from "../Navbar";
 import "./style.css";
 const Layout = ({ children }) => {
   const [isShown, setIsShown] = useState(false);
