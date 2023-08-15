@@ -1,0 +1,57 @@
+.sidebar {
+    background-color: grey;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 19%;
+    background-color: #1C2536;
+    color: #fff;
+    z-index: 99999;
+    transition: all 0.2s ease;
+}
+
+.sidebar.slide-right {
+    width: 55%;
+    left: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.2s;
+    z-index: 9999;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 19%;
+        left: -101%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .sidebar {
+        width: 20%;
+    }
+}

@@ -1,4 +1,5 @@
 import ProductsProvider from "./Context";
+import Layout from "./components/Layout";
 import UploadForm from "./components/UploadForm";
 
 function App() {
@@ -6,7 +7,12 @@ function App() {
   return (
     <div className="App">
       <ProductsProvider>
-        <UploadForm />
+        <Layout>
+          <UploadForm />
+          <UploadForm />
+          <UploadForm />
+          <UploadForm />
+        </Layout>
       </ProductsProvider>
     </div>
   );
