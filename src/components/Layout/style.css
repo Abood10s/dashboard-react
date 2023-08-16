@@ -1,7 +1,5 @@
 .content {
     padding: 0.5rem;
-    display: grid;
-    place-items: center;
     position: absolute;
     top: 70px;
     left: 19%;

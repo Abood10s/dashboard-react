@@ -48,6 +48,14 @@ body {
     }
 }
 
+@keyframes HideMenu {
+    to {
+        transform: scale(0);
+        opacity: 0;
+        display: none;
+    }
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;

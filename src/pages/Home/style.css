@@ -5,3 +5,11 @@
     flex-wrap: wrap;
     gap: 2rem;
 }
+
+.widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0.5rem 2rem;
+    gap: 2rem;
+    margin: 1rem auto;
+}

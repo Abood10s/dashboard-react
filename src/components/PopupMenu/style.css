@@ -1,0 +1,29 @@
+.pop-menu-container {
+    position: absolute;
+    top: 58px;
+    right: 18px;
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 14px;
+    user-select: none;
+}
+
+.sign-out {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    transition: all ease 0.2s;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.sign-out:hover {
+    background-color: #ddd;
+}
+
+.line {
+    height: 1px;
+    margin: 0.5rem 0;
+    background-color: #ddd;
+}

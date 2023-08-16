@@ -1,0 +1,15 @@
+.stats-card-cont {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 14px;
+    border-radius: 12px;
+    padding: 2rem 1rem;
+}
+
+.stats-card-cont img {
+    max-height: 50px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}

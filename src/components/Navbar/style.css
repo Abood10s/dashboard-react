@@ -17,6 +17,12 @@
     color: #6C737F;
 }
 
+.avatar img {
+    cursor: pointer;
+    height: 35px;
+    z-index: -1;
+}
+
 .menu {
     display: none;
     cursor: pointer;
