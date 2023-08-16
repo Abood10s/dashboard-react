@@ -1,16 +1,15 @@
 import React from "react";
-import "./style.css";
 import { useFormik } from "formik";
-import Product from "../Product";
 import { formatFileSize, schema, toBase64 } from "../../utils";
 import FormField from "./FormField";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context";
 
+import "./style.css";
+
 const UploadForm = () => {
   const date = new Date();
-  const { products, addProduct, deleteAllProducts } =
-    useContext(ProductsContext);
+  const { addProduct } = useContext(ProductsContext);
 
   const formik = useFormik({
     initialValues: {
@@ -154,18 +153,6 @@ const UploadForm = () => {
           Submit
         </button>
       </form>
-      {products?.map((product) => {
-        return <Product data={product} key={product.id} />;
-      })}
-      {products.length > 1 && (
-        <button
-          onClick={() => deleteAllProducts()}
-          className="delete-image"
-          style={{ margin: "1.5rem " }}
-        >
-          Delete All products
-        </button>
-      )}
     </>
   );
 };

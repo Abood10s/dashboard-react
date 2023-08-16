@@ -1,13 +1,15 @@
 .content {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 0.5rem;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 70px;
+    left: 19%;
+    right: 0;
 }
 
-@media screen and (1200px <=width <=1400px) {
+@media screen and (max-width: 1200px) {
     .content {
-        margin-left: 10rem;
+        left: 0;
     }
 }

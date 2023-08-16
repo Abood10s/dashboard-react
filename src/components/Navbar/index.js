@@ -1,8 +1,9 @@
 import React from "react";
-import "./style.css";
 import { CiSearch, CiMenuBurger } from "react-icons/ci";
 import { RiNotification2Fill } from "react-icons/ri";
 import { RiParentFill } from "react-icons/ri";
+
+import "./style.css";
 
 const Navbar = ({ isShown, setIsShown }) => {
   return (

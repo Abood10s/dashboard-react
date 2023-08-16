@@ -1,10 +1,11 @@
 .upload-form {
-    margin: 1rem auto;
     padding: 1rem;
     max-width: 500px;
-    border: 2px solid #007bff59;
+    border: 2px solid #9C27B0;
     border-radius: 7px;
-    margin: 1rem 1.5rem;
+    background-color: #fff;
+    color: #9C27B0;
+    margin: 2rem;
 }
 
 .form-group {
@@ -20,18 +21,14 @@
 .input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #007bff59;
+    border: 1px solid #9C27B0;
     border-radius: 4px;
     outline: none;
     transition: all ease 0.1s;
 }
 
 .input:focus {
-    border: 2px solid #0056b3;
-}
-
-.input.invalid {
-    animation: InvalidInput 0.3s ease-in-out 3;
+    border: 2px solid #9C27B0;
 }
 
 .product-image {
@@ -73,7 +70,7 @@
 }
 
 .submit-button {
-    background-color: #007bff;
+    background-color: #5D61DF;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -83,23 +80,4 @@
 
 .submit-button:hover {
     background-color: #0056b3;
-}
-
-@keyframes InvalidInput {
-    0% {
-        transform: translateX(0px);
-        border: 1px solid red;
-    }
-    25% {
-        transform: translateX(5px);
-        border: 1px solid red;
-    }
-    70% {
-        transform: translateX(-5px);
-        border: 1px solid red;
-    }
-    100% {
-        transform: translateX(0);
-        border: 1px solid red;
-    }
 }
