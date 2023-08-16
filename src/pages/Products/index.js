@@ -4,6 +4,7 @@ import { RiAddFill } from "react-icons/ri";
 import Modal from "../../components/Modal";
 import UploadForm from "../../components/UploadForm";
 import Product from "../../components/Product";
+import Layout from "../../components/Layout/index";
 
 import "./style.css";
 
@@ -12,7 +13,7 @@ const ProductsPage = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
+    <Layout>
       <div className="all-products">
         <div className="products-cont">
           <h2>Products</h2>
@@ -40,7 +41,7 @@ const ProductsPage = () => {
           </button>
         )}
       </div>
-    </>
+    </Layout>
   );
 };
 

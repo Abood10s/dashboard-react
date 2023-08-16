@@ -1,8 +1,10 @@
 import HomePage from "../pages/Home";
+import LoginPage from "../pages/Login";
 import ProductsPage from "../pages/Products";
 
 export const PATHS = {
   OVERVIEW: "/",
+  LOGIN: "/login",
   ACCOUNT: "/about",
   PRODUCTS: "/products",
   SETTINGS: "/settings",
@@ -13,6 +15,7 @@ export const PATHS = {
 export const router = [
   { index: true, element: <HomePage /> },
   { path: PATHS.PRODUCTS, element: <ProductsPage /> },
+  { path: PATHS.LOGIN, element: <LoginPage /> },
   { path: PATHS.ACCOUNT, element: <p>ACCOUNT</p> },
   { path: PATHS.SETTINGS, element: <p>SETTINGS</p> },
   { path: PATHS.CONTACT_US, element: <p>CONTACT_US</p> },
