@@ -19,7 +19,7 @@ class DonutChart extends Component {
             breakpoint: 568,
             options: {
               chart: {
-                width: "115%",
+                width: "100%",
               },
             },
           },
