@@ -4,12 +4,7 @@ import { PATHS } from "../../routes";
 import { useLocation } from "react-router-dom";
 import { AiFillSignal } from "react-icons/ai";
 import { RiPriceTag3Fill, RiLoginBoxFill } from "react-icons/ri";
-import {
-  RiSettings5Fill,
-  RiTwitterFill,
-  RiInstagramFill,
-  RiGithubFill,
-} from "react-icons/ri";
+import { RiTwitterFill, RiInstagramFill, RiGithubFill } from "react-icons/ri";
 
 import "./style.css";
 
