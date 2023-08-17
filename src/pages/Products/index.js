@@ -3,9 +3,9 @@ import { ProductsContext } from "../../Context";
 import { RiAddFill } from "react-icons/ri";
 import Modal from "../../components/Modal";
 import UploadForm from "../../components/UploadForm";
-import Product from "../../components/Product";
 import Layout from "../../components/Layout/index";
 
+import ProductsTable from "../../components/ProductsTable";
 import "./style.css";
 
 const ProductsPage = () => {
@@ -23,23 +23,21 @@ const ProductsPage = () => {
         </div>
         {showModal ? (
           <Modal showModal={showModal} setShowModal={setShowModal}>
-            <UploadForm />
+            <UploadForm setShowModal={setShowModal} />
           </Modal>
         ) : null}
-        <div className="products">
-          {products?.map((product) => {
-            return <Product data={product} key={product.id} />;
-          })}
+        {products.length > 0 && <ProductsTable data={products} />}
+        <div style={{ maxWidth: "90%", margin: "auto" }}>
+          {products.length > 1 && (
+            <button
+              onClick={() => deleteAllProducts()}
+              className="delete-image"
+              style={{ margin: "1.5rem 0" }}
+            >
+              Delete All products
+            </button>
+          )}
         </div>
-        {products.length > 1 && (
-          <button
-            onClick={() => deleteAllProducts()}
-            className="delete-image"
-            style={{ margin: "1.5rem 0" }}
-          >
-            Delete All products
-          </button>
-        )}
       </div>
     </Layout>
   );

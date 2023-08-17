@@ -10,6 +10,18 @@ body {
     place-items: center;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #382f60;
+}
+
 .fade-in {
     animation: fadeIn ease 0.2s;
 }
@@ -35,6 +47,37 @@ body {
     color: #6366F1;
     border: 1px solid #6366F1;
     font-weight: bold;
+}
+
+.account-menu {
+    position: absolute;
+    top: 58px;
+    right: 18px;
+}
+
+.notification-menu {
+    position: absolute;
+    top: 58px;
+    right: 38px;
+}
+
+.sign-out {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    transition: all ease 0.2s;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.sign-out:hover {
+    background-color: #ddd;
+}
+
+.line {
+    height: 1px;
+    margin: 0.5rem 0;
+    background-color: #ddd;
 }
 
 @keyframes fadeModal {

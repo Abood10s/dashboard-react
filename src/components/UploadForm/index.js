@@ -7,7 +7,7 @@ import { ProductsContext } from "../../Context";
 
 import "./style.css";
 
-const UploadForm = () => {
+const UploadForm = ({ setShowModal }) => {
   const date = new Date();
   const { addProduct } = useContext(ProductsContext);
 
@@ -38,6 +38,7 @@ const UploadForm = () => {
         rating: undefined,
         price: undefined,
       });
+      setShowModal(false);
     },
   });
   return (

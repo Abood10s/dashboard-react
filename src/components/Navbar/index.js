@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CiSearch, CiMenuBurger } from "react-icons/ci";
 import { RiNotification2Fill } from "react-icons/ri";
 import { RiParentFill } from "react-icons/ri";
-import defaultAvatar from "../../assets/default_avatar.jpg";
+import defaultAvatar from "../../assets/profile.png";
 import PopUpMenu from "../PopupMenu";
 
 import "./style.css";
@@ -24,9 +24,15 @@ const Navbar = ({ isShown, setIsShown }) => {
         <div className="avatar" onClick={() => setShowMenu(!showMenu)}>
           <img src={defaultAvatar} alt="profile" />
         </div>
-        <PopUpMenu showMenu={showMenu} setShowMenu={setShowMenu}>
+        <PopUpMenu
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          classStyle="account-menu"
+        >
           <h4>Account</h4>
           <small>Abood maher</small>
+          <div className="line"></div>
+          <button className="sign-out">Signout</button>
         </PopUpMenu>
       </div>
     </div>

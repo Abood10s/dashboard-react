@@ -19,6 +19,7 @@ const HomePage = () => {
         <StatsCard title="TASK PROGRESS" stats="75.5%" photo={Task} />
         <StatsCard title="TOTAL PROFIT" stats="$15k" photo={Bills} />
       </div>
+
       <div className="charts">
         <FirstChart />
         <DonutChart />

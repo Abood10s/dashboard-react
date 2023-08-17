@@ -1,11 +1,12 @@
 .upload-form {
     padding: 1rem;
     max-width: 500px;
-    border: 2px solid #9C27B0;
+    max-height: 650px;
     border-radius: 7px;
     background-color: #fff;
     color: #9C27B0;
     margin: 2rem;
+    overflow-y: auto;
 }
 
 .form-group {

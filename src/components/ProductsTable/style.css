@@ -1,0 +1,41 @@
+.table-container {
+    max-width: 90%;
+    overflow-x: auto;
+    margin: 1rem auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 8px;
+}
+
+.table-header {
+    color: #fff;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+tr {
+    transition: all ease 0.2s;
+}
+
+th {
+    background-color: #382f60;
+}
+
+table img {
+    max-width: 105px;
+    height: auto;
+}
+
+table tr:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
