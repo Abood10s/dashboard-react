@@ -3,8 +3,7 @@ import SideBarItem from "../SidebarItem";
 import { PATHS } from "../../routes";
 import { useLocation } from "react-router-dom";
 import { AiFillSignal } from "react-icons/ai";
-import { RiUser3Fill } from "react-icons/ri";
-import { RiPriceTag3Fill } from "react-icons/ri";
+import { RiPriceTag3Fill, RiLoginBoxFill } from "react-icons/ri";
 import {
   RiSettings5Fill,
   RiTwitterFill,
@@ -32,6 +31,9 @@ const SideBar = ({ isShown, setIsShown }) => {
           </SideBarItem> */}
           <SideBarItem title={"Products"} path={PATHS.PRODUCTS}>
             <RiPriceTag3Fill className="icon" />
+          </SideBarItem>
+          <SideBarItem title={"Login"} path={PATHS.LOGIN}>
+            <RiLoginBoxFill className="icon" />
           </SideBarItem>
           {/* <SideBarItem title={"Settings"} path={PATHS.SETTINGS}>
             <RiSettings5Fill className="icon" />
