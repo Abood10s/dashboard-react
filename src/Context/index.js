@@ -24,11 +24,17 @@ const ProductsProvider = ({ children }) => {
     localStorage.setItem("products", JSON.stringify(updatedProducts));
   };
   const deleteProduct = (id) => {
-    setProducts(products.filter((item) => item.id !== id));
+    const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
+    const updatedProducts = existingProducts.filter((item) => item.id !== id);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    setProducts(updatedProducts);
   };
   const deleteAllProducts = () => {
     localStorage.clear();
     setProducts([]);
+  };
+  const editProduct = ({ data }) => {
+    const { id } = data;
   };
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products"));
@@ -46,6 +52,7 @@ const ProductsProvider = ({ children }) => {
         setProducts,
         deleteAllProducts,
         addComment,
+        editProduct,
       }}
     >
       {children}

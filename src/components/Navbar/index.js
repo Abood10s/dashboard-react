@@ -6,9 +6,11 @@ import defaultAvatar from "../../assets/profile.png";
 import PopUpMenu from "../PopupMenu";
 
 import "./style.css";
-
+const showSearchAnimation = { animation: "showSearch 0.2s forwards" };
+const hideSearchAnimation = { animation: "hideSearch 0.2s forwards" };
 const Navbar = ({ isShown, setIsShown }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   return (
     <div className="navbar">
       <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
@@ -16,7 +18,19 @@ const Navbar = ({ isShown, setIsShown }) => {
           className="menu icon"
           onClick={() => setIsShown(!isShown)}
         />
-        <CiSearch className="icon" />
+        <div className="search-cont">
+          <CiSearch
+            className="icon search-icon"
+            onClick={() => setShowSearch(!showSearch)}
+            style={{ color: showSearch ? "#6366F1" : "inherit" }}
+          />
+          <input
+            type="search"
+            className={`search-input`}
+            placeholder="Search"
+            style={showSearch ? showSearchAnimation : hideSearchAnimation}
+          />
+        </div>
       </div>
       <div className="right-icons">
         <RiParentFill className="icon" />{" "}

@@ -35,7 +35,22 @@ table img {
     height: auto;
 }
 
-table tr:hover {
-    background-color: #ccc;
+td div {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    padding: 0.4rem 0.2rem;
+    border-radius: 50%;
+    place-items: center;
+    transition: all ease 0.2s;
+}
+
+td div:hover {
+    background-color: #ddd;
+}
+
+td .icon {
+    color: #382f60;
+    font-size: 21px;
     cursor: pointer;
 }

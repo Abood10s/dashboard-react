@@ -1,6 +1,7 @@
-import HomePage from "../pages/Home";
-import LoginPage from "../pages/Login";
-import ProductsPage from "../pages/Products";
+import React from "react";
+const HomePage = React.lazy(() => import("../pages/Home"));
+const ProductsPage = React.lazy(() => import("../pages/Products"));
+const LoginPage = React.lazy(() => import("../pages/Login"));
 
 export const PATHS = {
   OVERVIEW: "/",

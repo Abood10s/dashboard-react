@@ -10,7 +10,6 @@ import "./style.css";
 const UploadForm = ({ setShowModal }) => {
   const date = new Date();
   const { addProduct } = useContext(ProductsContext);
-
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -30,6 +29,7 @@ const UploadForm = ({ setShowModal }) => {
         id: Math.floor(Math.random() * 1000),
         productImage: imageBase64,
       });
+      setShowModal(false);
       resetForm({
         name: "",
         category: "",
@@ -38,7 +38,6 @@ const UploadForm = ({ setShowModal }) => {
         rating: undefined,
         price: undefined,
       });
-      setShowModal(false);
     },
   });
   return (

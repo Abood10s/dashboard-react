@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import star from "../../assets/star.png";
 import "./style.css";
+import { RiEdit2Fill, RiDeleteBin2Fill } from "react-icons/ri";
+import { ProductsContext } from "../../Context";
+
 const ProductsTable = ({ data }) => {
+  const { deleteProduct } = useContext(ProductsContext);
   return (
     <div className="table-container">
       <table>
@@ -13,6 +17,7 @@ const ProductsTable = ({ data }) => {
             <th>Description</th>
             <th>Rating</th>
             <th>Price</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +37,7 @@ const ProductsTable = ({ data }) => {
                 <img key={i} src={star} alt="ss" className="star-img" />
               );
             }
+
             return (
               <tr key={id}>
                 <td style={{ textAlign: "center" }}>
@@ -42,6 +48,15 @@ const ProductsTable = ({ data }) => {
                 <td>{description}</td>
                 <td style={{ textAlign: "center" }}>{stars}</td>
                 <td>{price}$</td>
+                <td>
+                  <div>
+                    <RiEdit2Fill className="icon" />
+                  </div>
+
+                  <div onClick={() => deleteProduct(id)}>
+                    <RiDeleteBin2Fill className="icon" />
+                  </div>
+                </td>
               </tr>
             );
           })}
