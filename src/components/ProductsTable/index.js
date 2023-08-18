@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import star from "../../assets/star.png";
 import "./style.css";
 import { RiEdit2Fill, RiDeleteBin2Fill } from "react-icons/ri";
 import { ProductsContext } from "../../Context";
+import Modal from "../Modal";
+import UploadForm from "../UploadForm";
 
 const ProductsTable = ({ data }) => {
   const { deleteProduct } = useContext(ProductsContext);
+  const [showModal, setShowModal] = useState(false);
+  let currElement = undefined;
   return (
     <div className="table-container">
       <table>
@@ -31,6 +35,7 @@ const ProductsTable = ({ data }) => {
               price,
               rating,
             } = element;
+            currElement = element;
             const stars = [];
             for (let i = 0; i < rating; i++) {
               stars.push(
@@ -50,7 +55,10 @@ const ProductsTable = ({ data }) => {
                 <td>{price}$</td>
                 <td>
                   <div>
-                    <RiEdit2Fill className="icon" />
+                    <RiEdit2Fill
+                      className="icon"
+                      onClick={() => setShowModal(true)}
+                    />
                   </div>
 
                   <div onClick={() => deleteProduct(id)}>
@@ -62,6 +70,11 @@ const ProductsTable = ({ data }) => {
           })}
         </tbody>
       </table>
+      {showModal ? (
+        <Modal showModal={showModal} setShowModal={setShowModal}>
+          <UploadForm setShowModal={setShowModal} initialValues={currElement} />
+        </Modal>
+      ) : null}
     </div>
   );
 };

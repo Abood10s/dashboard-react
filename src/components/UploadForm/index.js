@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { formatFileSize, schema, toBase64 } from "../../utils";
 import FormField from "./FormField";
@@ -7,9 +7,9 @@ import { ProductsContext } from "../../Context";
 
 import "./style.css";
 
-const UploadForm = ({ setShowModal }) => {
+const UploadForm = ({ setShowModal, initialValues }) => {
   const date = new Date();
-  const { addProduct } = useContext(ProductsContext);
+  const { addProduct, editProduct } = useContext(ProductsContext);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -18,17 +18,30 @@ const UploadForm = ({ setShowModal }) => {
       productImage: undefined,
       rating: undefined,
       price: undefined,
+      ...initialValues,
     },
     validationSchema: schema,
     onSubmit: async (values, { resetForm }) => {
       const imageBase64 = await toBase64(values.productImage);
-      addProduct({
-        ...values,
-        time: date.toLocaleTimeString(),
-        productDate: date.toLocaleDateString("en-gb"),
-        id: Math.floor(Math.random() * 1000),
-        productImage: imageBase64,
-      });
+
+      if (initialValues) {
+        // Editing an existing product
+        editProduct({
+          id: initialValues.id,
+          ...values,
+          productImage: imageBase64,
+        });
+      } else {
+        // Adding a new product
+        addProduct({
+          ...values,
+          time: date.toLocaleTimeString(),
+          productDate: date.toLocaleDateString("en-gb"),
+          id: Math.floor(Math.random() * 1000),
+          productImage: imageBase64,
+        });
+      }
+
       setShowModal(false);
       resetForm({
         name: "",
@@ -40,6 +53,15 @@ const UploadForm = ({ setShowModal }) => {
       });
     },
   });
+
+  useEffect(() => {
+    if (initialValues) {
+      formik.resetForm({
+        ...formik.values,
+        ...initialValues,
+      });
+    }
+  }, [initialValues]);
   return (
     <>
       <form onSubmit={formik.handleSubmit} className="upload-form">
@@ -90,32 +112,35 @@ const UploadForm = ({ setShowModal }) => {
             }}
             onBlur={formik.handleBlur}
           />
-          {formik.values.productImage && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "1rem",
-                alignItems: "center",
-                margin: "0.5rem auto",
-              }}
-            >
-              <img
-                src={URL.createObjectURL(formik.values.productImage)}
-                alt="product"
-                className="fade-in product-image"
-              />
-              <small style={{ fontWeight: "bold", marginLeft: "1rem" }}>
-                file size: {formatFileSize(formik.values.productImage.size)}
-              </small>
-              <button
-                onClick={() => (formik.values.productImage = undefined)}
-                className="delete-image"
+          {formik.values.productImage &&
+            formik.values.productImage instanceof File && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: "1rem",
+                  alignItems: "center",
+                  margin: "0.5rem auto",
+                }}
               >
-                Delete
-              </button>
-            </div>
-          )}
+                <img
+                  src={URL.createObjectURL(formik.values.productImage)}
+                  alt="product"
+                  className="fade-in product-image"
+                />
+                <small style={{ fontWeight: "bold", marginLeft: "1rem" }}>
+                  file size: {formatFileSize(formik.values.productImage.size)}
+                </small>
+                <button
+                  onClick={() =>
+                    formik.setFieldValue("productImage", undefined)
+                  }
+                  className="delete-image"
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           {formik.touched.productImage && formik.errors.productImage ? (
             <small style={{ color: "red", fontWeight: "bold" }}>
               {formik.errors.productImage}
@@ -150,7 +175,7 @@ const UploadForm = ({ setShowModal }) => {
           placeholder="What's your thoughts about the product"
         />
         <button type="submit" className="submit-button">
-          Submit
+          {initialValues ? "Edit Product" : "Submit"}
         </button>
       </form>
     </>
