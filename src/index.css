@@ -106,6 +106,7 @@ body {
     }
     to {
         transform: scale(1);
+        width: 90%;
         transform-origin: left;
     }
 }
