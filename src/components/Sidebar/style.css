@@ -1,5 +1,4 @@
 .sidebar {
-    background-color: grey;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,6 +23,12 @@
 .sidebar .icon {
     font-size: 17px;
     color: #6C737F;
+}
+
+.side-line {
+    background-color: #6643B5;
+    height: 2px;
+    width: 100%;
 }
 
 .sidebar.slide-right {

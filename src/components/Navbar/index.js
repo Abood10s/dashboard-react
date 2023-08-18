@@ -7,7 +7,7 @@ import PopUpMenu from "../PopupMenu";
 
 import "./style.css";
 const showSearchAnimation = { animation: "showSearch 0.2s forwards" };
-const hideSearchAnimation = { animation: "hideSearch 0.2s forwards" };
+const hideSearchAnimation = { animation: "hideSearch 0.1s forwards" };
 const Navbar = ({ isShown, setIsShown }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);

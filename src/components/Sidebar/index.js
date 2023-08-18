@@ -36,6 +36,7 @@ const SideBar = ({ isShown, setIsShown }) => {
               ></path>
             </svg>
           </Link>
+          <div className="side-line"></div>
         </div>
         <div className="side-links">
           <SideBarItem title={"Overview"} path={PATHS.OVERVIEW}>
