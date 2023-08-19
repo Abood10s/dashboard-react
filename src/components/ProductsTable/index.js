@@ -5,6 +5,7 @@ import { RiEdit2Fill, RiDeleteBin2Fill } from "react-icons/ri";
 import { ProductsContext } from "../../Context";
 import Modal from "../Modal";
 import UploadForm from "../UploadForm";
+import { Toaster, toast } from "react-hot-toast";
 
 const ProductsTable = ({ data }) => {
   const { deleteProduct } = useContext(ProductsContext);
@@ -64,7 +65,12 @@ const ProductsTable = ({ data }) => {
                     />
                   </div>
 
-                  <div onClick={() => deleteProduct(id)}>
+                  <div
+                    onClick={() => {
+                      deleteProduct(id);
+                      toast.success("Product Deleted Successfully");
+                    }}
+                  >
                     <RiDeleteBin2Fill className="icon" />
                   </div>
                 </td>
@@ -72,6 +78,7 @@ const ProductsTable = ({ data }) => {
             );
           })}
         </tbody>
+        <Toaster position="bottom-center" reverseOrder={false} />
       </table>
       {showModal ? (
         <Modal showModal={showModal} setShowModal={setShowModal}>

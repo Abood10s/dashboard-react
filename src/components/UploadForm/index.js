@@ -4,6 +4,7 @@ import { formatFileSize, schema, toBase64 } from "../../utils";
 import FormField from "./FormField";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context";
+import toast, { Toaster } from "react-hot-toast";
 
 import "./style.css";
 
@@ -32,6 +33,7 @@ const UploadForm = ({ setShowModal, initialValues }) => {
           ...values,
           productImage: imageBase64,
         });
+        toast.success("Product Edited Successfully");
       } else {
         addProduct({
           ...values,
@@ -40,6 +42,7 @@ const UploadForm = ({ setShowModal, initialValues }) => {
           id: Math.floor(Math.random() * 1000),
           productImage: imageBase64,
         });
+        toast.success("Product Added Successfully");
       }
 
       setShowModal(false);
@@ -64,6 +67,7 @@ const UploadForm = ({ setShowModal, initialValues }) => {
   }, [initialValues]);
   return (
     <>
+      <Toaster position="top-center" />
       <form onSubmit={formik.handleSubmit} className="upload-form">
         <FormField
           label="Product Name"
