@@ -33,8 +33,18 @@ const ProductsProvider = ({ children }) => {
     localStorage.clear();
     setProducts([]);
   };
-  const editProduct = ({ data }) => {
-    const { id } = data;
+  const editProduct = (data) => {
+    const { id, ...updatedData } = data;
+
+    const updatedProducts = products.map((product) => {
+      if (product.id === id) {
+        return { ...product, ...updatedData };
+      }
+      return product;
+    });
+
+    setProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
   };
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products"));

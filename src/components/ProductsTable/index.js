@@ -9,7 +9,7 @@ import UploadForm from "../UploadForm";
 const ProductsTable = ({ data }) => {
   const { deleteProduct } = useContext(ProductsContext);
   const [showModal, setShowModal] = useState(false);
-  let currElement = undefined;
+  const [selectedProduct, setSelectedProduct] = useState(null);
   return (
     <div className="table-container">
       <table>
@@ -35,7 +35,7 @@ const ProductsTable = ({ data }) => {
               price,
               rating,
             } = element;
-            currElement = element;
+
             const stars = [];
             for (let i = 0; i < rating; i++) {
               stars.push(
@@ -57,7 +57,10 @@ const ProductsTable = ({ data }) => {
                   <div>
                     <RiEdit2Fill
                       className="icon"
-                      onClick={() => setShowModal(true)}
+                      onClick={() => {
+                        setSelectedProduct(element);
+                        setShowModal(true);
+                      }}
                     />
                   </div>
 
@@ -72,7 +75,10 @@ const ProductsTable = ({ data }) => {
       </table>
       {showModal ? (
         <Modal showModal={showModal} setShowModal={setShowModal}>
-          <UploadForm setShowModal={setShowModal} initialValues={currElement} />
+          <UploadForm
+            setShowModal={setShowModal}
+            initialValues={selectedProduct}
+          />
         </Modal>
       ) : null}
     </div>

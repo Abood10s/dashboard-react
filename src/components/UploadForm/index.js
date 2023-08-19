@@ -22,17 +22,17 @@ const UploadForm = ({ setShowModal, initialValues }) => {
     },
     validationSchema: schema,
     onSubmit: async (values, { resetForm }) => {
-      const imageBase64 = await toBase64(values.productImage);
+      const imageBase64 = await toBase64(
+        values.productImage || initialValues.productImage
+      );
 
       if (initialValues) {
-        // Editing an existing product
         editProduct({
           id: initialValues.id,
           ...values,
           productImage: imageBase64,
         });
       } else {
-        // Adding a new product
         addProduct({
           ...values,
           time: date.toLocaleTimeString(),
@@ -112,35 +112,28 @@ const UploadForm = ({ setShowModal, initialValues }) => {
             }}
             onBlur={formik.handleBlur}
           />
-          {formik.values.productImage &&
-            formik.values.productImage instanceof File && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: "1rem",
-                  alignItems: "center",
-                  margin: "0.5rem auto",
-                }}
-              >
-                <img
-                  src={URL.createObjectURL(formik.values.productImage)}
-                  alt="product"
-                  className="fade-in product-image"
-                />
-                <small style={{ fontWeight: "bold", marginLeft: "1rem" }}>
-                  file size: {formatFileSize(formik.values.productImage.size)}
-                </small>
-                <button
-                  onClick={() =>
-                    formik.setFieldValue("productImage", undefined)
-                  }
-                  className="delete-image"
-                >
-                  Delete
-                </button>
-              </div>
-            )}
+
+          {formik.values.productImage && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "1rem",
+                alignItems: "center",
+                margin: "0.5rem auto",
+              }}
+            >
+              <img
+                src={
+                  formik.values.productImage instanceof File
+                    ? URL.createObjectURL(formik.values.productImage)
+                    : initialValues.productImage
+                }
+                alt="product"
+                className="fade-in product-image"
+              />
+            </div>
+          )}
           {formik.touched.productImage && formik.errors.productImage ? (
             <small style={{ color: "red", fontWeight: "bold" }}>
               {formik.errors.productImage}
