@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const schema = Yup.object().shape({
+export const productSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Product Name must be at least 3 letters")
     .required("Product Name shouldn't be empty"),
@@ -48,6 +48,15 @@ export const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
+});
+export const categorySchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Category name must be at least 2 characters")
+    .required("Category name is required"),
+  subCategories: Yup.array()
+    .of(Yup.string())
+    .required("At least one sub-category is required"),
+  category: Yup.string().required("Product category is required"),
 });
 export function formatFileSize(bytes) {
   if (bytes >= 1024 * 1024) {

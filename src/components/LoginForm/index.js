@@ -80,7 +80,11 @@ const LoginForm = () => {
       </button>
       <div className="form-info">
         <RiInformationLine className="info-i" />
-        You can use demo@devias.io and password Password123!
+        <div>
+          You can use{" "}
+          <span style={{ color: "#6366F1" }}>mohammed@Abushaban</span> and
+          password <span style={{ color: "#6366F1" }}>Password123!</span>
+        </div>
       </div>
     </form>
   );

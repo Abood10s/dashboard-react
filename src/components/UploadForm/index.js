@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { formatFileSize, schema, toBase64 } from "../../utils";
+import { formatFileSize, productSchema, toBase64 } from "../../utils";
 import FormField from "./FormField";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context";
@@ -21,7 +21,7 @@ const UploadForm = ({ setShowModal, initialValues }) => {
       price: undefined,
       ...initialValues,
     },
-    validationSchema: schema,
+    validationSchema: productSchema,
     onSubmit: async (values, { resetForm }) => {
       const imageBase64 = await toBase64(
         values.productImage || initialValues.productImage
